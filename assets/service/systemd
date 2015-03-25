@@ -1,7 +1,15 @@
 [Unit]
 Description={{description}}
+{{#if requires}}
+Requires={{requires}}
+{{else}}
 Requires=network.target
+{{/if}}
+{{#if after}}
+After={{after}}
+{{else}}
 After=network.target
+{{/if}}
 
 [Service]
 ExecStart={{exec}}
