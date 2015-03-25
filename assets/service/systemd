@@ -1,15 +1,7 @@
 [Unit]
 Description={{description}}
-{{#if requires}}
-Requires={{requires}}
-{{else}}
-Requires=network.target
-{{/if}}
-{{#if after}}
-After={{after}}
-{{else}}
-After=network.target
-{{/if}}
+Requires=network.target{{#if requires}} {{requires}}{{/if}}
+After=network.target{{#if after}} {{after}}{{/if}}
 
 [Service]
 {{#if workingDir}}
@@ -23,7 +15,7 @@ RestartSec={{restartSec}}
 {{/if}}
 ExecStart={{exec}}
 PIDFile=/var/run/{{name}}.pid
-Environment="NODE_ENV=production" {{environment}}
+Environment="NODE_ENV=production"{{#if environment}} {{environment}}{{/if}}
 SyslogIdentifier={{name}}
 
 {{#if user}}
