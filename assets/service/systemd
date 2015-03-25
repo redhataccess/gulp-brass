@@ -23,7 +23,7 @@ RestartSec={{restartSec}}
 {{/if}}
 ExecStart={{exec}}
 PIDFile=/var/run/{{name}}.pid
-Environment="NODE_ENV=production"
+Environment="NODE_ENV=production" {{environment}}
 
 {{#if user}}
 User={{user}}
