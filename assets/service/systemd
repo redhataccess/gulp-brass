@@ -1,29 +1,29 @@
 [Unit]
 Description={{description}}
-Requires=network.target{{#if requires}} {{requires}}{{/if}}
-After=network.target{{#if after}} {{after}}{{/if}}
+Requires=network.target{{#requires}} {{requires}}{{/requires}}
+After=network.target{{#after}} {{after}}{{/after}}
 
 [Service]
-{{#if workingDir}}
+{{#workingDir}}
 WorkingDirectory={{workingDir}}
-{{/if}}
-{{#if restart}}
+{{/workingDir}}
+{{#restart}}
 Restart={{restart}}
-{{/if}}
-{{#if restartSec}}
+{{/restart}}
+{{#restartSec}}
 RestartSec={{restartSec}}
-{{/if}}
+{{/restartSec}}
 ExecStart={{exec}}
 PIDFile=/var/run/{{name}}.pid
-Environment="NODE_ENV=production"{{#if environment}} {{environment}}{{/if}}
+Environment={{#environment}}{{environment}}{{/environment}}{{^environment}}"NODE_ENV=production"{{/environment}}
 SyslogIdentifier={{name}}
 
-{{#if user}}
+{{#user}}
 User={{user}}
-{{/if}}
-{{#if group}}
+{{/user}}
+{{#group}}
 Group={{group}}
-{{/if}}
+{{/group}}
 
 [Install]
 WantedBy=multi-user.target
