@@ -15,7 +15,7 @@ RestartSec={{restartSec}}
 {{/if}}
 ExecStart={{exec}}
 PIDFile=/var/run/{{name}}.pid
-Environment="NODE_ENV=production"{{#if environment}} {{environment}}{{/if}}
+Environment={{#if environment}}{{environment}}{{else}}"NODE_ENV=production"{{/if}}
 SyslogIdentifier={{name}}
 
 {{#if user}}
